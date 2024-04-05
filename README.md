@@ -18,8 +18,6 @@ lr_finder = LRFinder(net_exp, optimizer, criterion, device=device)
 lr_finder.range_test(trainloader, end_lr=0.1, num_iter=200)
 lr_finder.plot()
 
-Learning rate search finished. See the graph with {finder_name}.plot()
-LR suggestion: steepest gradient
 Suggested LR: 1.32E-03
 
 ![image](https://github.com/harikishanm96/S10---Assignment/assets/53985105/29364eb7-a134-40bd-a255-4a59485176e6)
