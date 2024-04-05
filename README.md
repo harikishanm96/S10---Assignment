@@ -6,16 +6,16 @@
 
 ## LR finder
 
-import copy
-from torch_lr_finder import LRFinder
-import torch.nn as nn
-import numpy as np
-
 net_exp = copy.deepcopy(net)
+
 optimizer = torch.optim.Adam(net_exp.parameters(), lr=0.001, weight_decay=0.01)
+
 criterion = nn.CrossEntropyLoss()
+
 lr_finder = LRFinder(net_exp, optimizer, criterion, device=device)
+
 lr_finder.range_test(trainloader, end_lr=0.1, num_iter=200)
+
 lr_finder.plot()
 
 Suggested LR: 1.32E-03
