@@ -4,6 +4,27 @@
 
 ![image](https://github.com/harikishanm96/S10---Assignment/assets/53985105/29fa06c2-32e9-4450-bae2-21edf04e873f)
 
+## LR finder
+
+import copy
+from torch_lr_finder import LRFinder
+import torch.nn as nn
+import numpy as np
+
+net_exp = copy.deepcopy(net)
+optimizer = torch.optim.Adam(net_exp.parameters(), lr=0.001, weight_decay=0.01)
+criterion = nn.CrossEntropyLoss()
+lr_finder = LRFinder(net_exp, optimizer, criterion, device=device)
+lr_finder.range_test(trainloader, end_lr=0.1, num_iter=200)
+lr_finder.plot()
+
+Learning rate search finished. See the graph with {finder_name}.plot()
+LR suggestion: steepest gradient
+Suggested LR: 1.32E-03
+
+![image](https://github.com/harikishanm96/S10---Assignment/assets/53985105/29364eb7-a134-40bd-a255-4a59485176e6)
+
+
 ## Logs
 
 Epoch: 0,Loss=1.25 Batch_id=97 Accuracy=46.52: 100%|██████████| 98/98 [00:31<00:00,  3.13it/s]
